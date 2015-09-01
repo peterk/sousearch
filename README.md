@@ -25,7 +25,16 @@ Skiss för SOU-labb
 
 6. Skapa SOU-objekt i databasen med python manage.py import_sou_data
 
+7. Läs in Libris-id med python manage.py collect_sou_metadata
+
 7. Läs in textdokument i elastic med python manage.py rebuild_index
 
 8. Starta servern lokalt med python manage.py runserver (kolla att det
    funkar)
+
+
+## Uppdatera till ny version av applikationen
+
+1. Gör git pull i katalogen för din applikation
+
+1. Gör om steg 4 för att få in ev. databasuppdateringar.
