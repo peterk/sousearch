@@ -9,7 +9,7 @@ class Betankande(models.Model):
     title = models.TextField(u"Titel", help_text=u'Ökat personval : betänkande')
     pdf_url = models.URLField(u"Länk till PDF-fil", blank=True)
     txtfile = models.CharField(u"Filnamn råtext", max_length=255)
-    libris_uri = models.URLField(u"URI för bibpost i Libris", blank=True, help_text=u'T.ex. http://libris.kb.se/resource/bib/7265056' )
+    libris_bib_id = models.CharField(u"Bib-id i Libris", max_length=50, blank=True, help_text=u'T.ex. 7265056' )
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
