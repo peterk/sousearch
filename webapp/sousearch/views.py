@@ -10,7 +10,8 @@ def index(request):
     return render_to_response('index.html', locals())
 
 
-def show(request):
+def show(request, number):
+    sou = get_object_or_404(Betankande, number=number)
     return render_to_response('show.html', locals())
 
 

@@ -21,6 +21,6 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^om/$', views.about, name='about'),
     url(r'^search/', include('haystack.urls')),
-    url(r'^sou/(?P<sou_number>[^/]+)/$', views.show, name='show'),
+    url(r'^sou/(?P<number>[^/]+)/$', views.show, name='show'),
     url(r'^admin/', include(admin.site.urls)),
 ]
