@@ -14,22 +14,28 @@ class Command(BaseCommand):
 
         count = 0
 
-        for txtfile in os.listdir(settings.SOUTXTPATH):
-            if txtfile.endswith(".txt"):
 
-                title, number = txtfile.split(" - SOU ")
-                number = number.replace(".txt","")
+        try:
+            for txtfile in os.listdir(settings.SOUTXTPATH):
+                if txtfile.endswith(".txt"):
 
-                try:
-                    #update
-                    b = Betankande.objects.get(number=number)
-                    b.title = title
-                    b.txtfile = txtfile
-                except Betankande.DoesNotExist:
-                    # create it
-                    b = Betankande(title=title, number=number, txtfile=txtfile)
+                    title, number = txtfile.split(" - SOU ")
+                    number = number.replace(".txt","")
 
-                b.save()
-                count += 1
+                    try:
+                        #update
+                        b = Betankande.objects.get(number=number)
+                        b.title = title
+                        b.txtfile = txtfile
+                    except Betankande.DoesNotExist:
+                        # create it
+                        b = Betankande(title=title, number=number, txtfile=txtfile)
+
+                    b.save()
+                    count += 1
+
+        except ValueError:
+            self.stdout.write(u'Fel vid import av %s. Hoppade över.' % txtfile)
+
 
         self.stdout.write('Importerade %s filer' % count)
